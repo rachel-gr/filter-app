@@ -1,0 +1,18 @@
+.wrapper{
+    direction: rtl;
+    margin: 10%;
+}
+.srch{
+    display: flex;
+    margin: 10px;
+}
+label{
+    margin: 10px;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+}
+data-card{
+    flex-basis: 20%;
+}

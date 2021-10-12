@@ -1,0 +1,42 @@
+<div class="wrapper">
+
+    <label>חיפוש</label>
+    <input type="text" pInputText placeholder="הקלד כאן ..." [(ngModel)]="filterText"
+        (input)="onSearchChange($event.target.value)" />
+    <div class="srch">
+        <div class="p-field-radiobutton">
+            <p-radioButton name="selectedValue" value="all" [(ngModel)]="selectedValue" inputId="all"></p-radioButton>
+            <label for="all">הכול</label>
+        </div>
+        <div class="p-field-radiobutton">
+            <p-radioButton name="selectedValue" value="selected" [(ngModel)]="selectedValue" inputId="selected">
+            </p-radioButton>
+            <label for="selected">נבחרו</label>
+        </div>
+        <div class="p-field-radiobutton">
+            <p-radioButton name="selectedValue" value="notSelected" [(ngModel)]="selectedValue" inputId="notSelected">
+            </p-radioButton>
+            <label for="notSelected">לא נבחרו</label>
+        </div>
+    </div>
+
+    <div class="cards">
+        <data-card (cardClickEvent)="cardClicked($event)" [data]="data"
+            *ngFor="let data of list | filterPipe: filterText | filterBySelectPipe: selectedValue">
+            {{data.Text}}</data-card>
+    </div>
+    <div>
+        <div>
+            רשימת כרטיסים שנבחרו:
+        </div>
+        <label *ngFor="let listSelect of listSelect">{{listSelect}}</label>
+        <div>
+            סך שמות זהים:
+        </div>
+        <label>{{countSame}}</label>
+        <div>
+            סך שמות כוללים:
+        </div>
+        <label>{{countContains}}</label>
+    </div>
+</div>
